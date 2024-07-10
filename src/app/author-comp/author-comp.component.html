@@ -1,0 +1,52 @@
+<div class="main-div">
+  <h2>Add Author</h2>
+  <form (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input [(ngModel)]="name" type="text" id="name" name="name" required>
+    </div>
+    <div class="form-group">
+      <label for="surname">Surname</label>
+      <input [(ngModel)]="surname" type="text" id="surname" name="surname" required>
+    </div>
+    <div class="form-group">
+      <label for="gender">Gender</label>
+      <select [(ngModel)]="gender" id="gender" name="gender" required>
+        <option value="MALE">Male</option>
+        <option value="FEMALE">Female</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="age">Age</label>
+      <input [(ngModel)]="age" type="number" id="age" name="age" required>
+    </div>
+    <div class="form-group">
+      <button type="submit">Submit</button>
+    </div>
+  </form>
+
+  <h2>Authors</h2>
+  <table>
+    <thead>
+    <tr>
+      <th>Name</th>
+      <th>Surname</th>
+      <th>Gender</th>
+      <th>Age</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let author of authors?.data">
+      <td>{{ author?.name }}</td>
+      <td>{{ author?.surname }}</td>
+      <td>{{ author?.gender }}</td>
+      <td>{{ author?.age }}</td>
+    </tr>
+    </tbody>
+  </table>
+  <div class="pagination">
+    <button (click)="previousPage()">Previous</button>
+    <span>Page {{ page + 1 }}</span>
+    <button (click)="nextPage()">Next</button>
+  </div>
+</div>
