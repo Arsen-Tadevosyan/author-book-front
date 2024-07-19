@@ -1,0 +1,17 @@
+<div class="menu">
+  <ul>
+    <li class="profile">
+      <a *ngIf="auth.isAuthenticated()" routerLink="/profile">
+        <img *ngIf="userImage" [src]="userImage" alt="User Photo" class="user-image" />
+        <span *ngIf="!userImage">Profile</span>
+      </a>
+    </li>
+    <li><a routerLink="/books">Books</a></li>
+    <li><a routerLink="/authors">Authors</a></li>
+    <li><a routerLink="/bookFilter">Filter</a></li>
+    <li><a *ngIf="auth.isAuthenticated()" routerLink="/favBooks" >My Favorite Books</a></li>
+    <li><a *ngIf="!auth.isAuthenticated()" routerLink="/auth">Login/Registration</a></li>
+    <li><a *ngIf="auth.isAuthenticated()" (click)="onLogout()">Logout</a></li>
+    <app-search-by-title></app-search-by-title>
+  </ul>
+</div>

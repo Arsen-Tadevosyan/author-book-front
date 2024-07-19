@@ -1,0 +1,71 @@
+<div class="container">
+  <div class="form-container">
+    <h1>Book Search</h1>
+    <form [formGroup]="filterForm" (ngSubmit)="onSubmit()" id="searchForm">
+      <div class="form-group">
+        <label for="title">Title</label>
+        <input formControlName="title" type="text" id="title" name="title">
+      </div>
+      <div class="form-group">
+        <label for="description">Description</label>
+        <input formControlName="description" type="text" id="description" name="description">
+      </div>
+      <div class="form-group">
+        <label for="minPrice">Min Price</label>
+        <input formControlName="minPrice" type="number" step="0.01" id="minPrice" name="minPrice">
+      </div>
+      <div class="form-group">
+        <label for="maxPrice">Max Price</label>
+        <input formControlName="maxPrice" type="number" step="0.01" id="maxPrice" name="maxPrice">
+      </div>
+      <div class="form-group">
+        <label for="orderBy">Order By</label>
+        <select formControlName="orderBy" id="orderBy" name="orderBy">
+          <option value="title">Title</option>
+          <option value="price">Price</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="orderDirection">Order Direction</label>
+        <select formControlName="orderDirection" id="orderDirection" name="orderDirection">
+          <option value="asc">Ascending</option>
+          <option value="desc">Descending</option>
+        </select>
+      </div>
+      <button type="submit">Search</button>
+    </form>
+  </div>
+  <div class="results-container">
+    <div id="results">
+      <table>
+        <thead>
+        <tr>
+          <th>Title</th>
+          <th>Description</th>
+          <th>Price</th>
+          <th>Single page</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let book of books">
+          <td>{{ book.title }}</td>
+          <td>{{ book.description }}</td>
+          <td>{{ book.price }}</td>
+          <td>
+            <button [routerLink]="['/book', book.id]">Single page</button>
+          </td>
+          <td>
+          <button (click)="addToFavorites(book.id)">Add to Favorites</button>
+          </td>
+
+
+        </tr>
+        </tbody>
+      </table>
+      <div class="pagination-controls">
+        <button (click)="prevPage()" [disabled]="currentPage === 0">Previous</button>
+        <button (click)="nextPage()" [disabled]="currentPage === totalPages - 1">Next</button>
+      </div>
+    </div>
+  </div>
+</div>

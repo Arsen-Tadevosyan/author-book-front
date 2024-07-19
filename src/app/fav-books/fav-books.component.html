@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="results-container">
+    <h2>My Favorite Books</h2>
+    <ul id="results">
+      <li *ngFor="let book of favoriteBooks" class="form-group">
+        <div class="book-card">
+          <h3> Title {{ book.title }}</h3>
+          <p>Description: {{ book.description }}</p>
+          <p>Price: {{ book.price }}</p>
+          <button [routerLink]="['/book', book.id]">Single page</button>
+          <button (click)="deleteFavoriteBook(book.id)">Remove from Favorites</button>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>

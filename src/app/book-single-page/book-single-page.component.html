@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="book-container" *ngIf="book">
+    <div class="book-card">
+      <h1 class="book-title">{{ book.title }}</h1>
+      <p class="book-description">{{ book.description }}</p>
+      <p class="book-price"><strong>Price:</strong> {{ book.price }}</p>
+      <button (click)="addToFavorites(book.id)">Add to Favorites</button>
+      <button (click)="toggleComments()">View Comments</button>
+    </div>
+    <div class="comments-section" *ngIf="commentsVisible">
+      <h2>Comments</h2>
+      <div class="comments-container">
+        <div *ngFor="let comment of comments" class="comment">
+          <p><strong>{{ comment.user.name }} {{ comment.user.surname }}:</strong> {{ comment.content }}</p>
+        </div>
+      </div>
+      <div *ngIf="auth.isAuthenticated()"  class="add-comment">
+        <textarea [(ngModel)]="newComment" placeholder="Add a comment"></textarea>
+        <button (click)="addComment()">Submit</button>
+      </div>
+    </div>
+  </div>
+</div>

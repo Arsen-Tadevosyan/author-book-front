@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="search-box">
+    <input placeholder="Search" type="text" [formControl]="searchControl" class="search-input">
+    <div *ngIf="searchControl.value!==''" class="scroll-container" (scroll)="onScroll($event)">
+      <table>
+        <thead>
+        <tr>
+          <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let book of books">
+          <td (click)="viewBook(book.id)" class="book-title">{{ book.title }}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>

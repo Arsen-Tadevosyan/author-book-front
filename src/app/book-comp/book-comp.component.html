@@ -1,0 +1,76 @@
+<div class="container">
+  <div class="form-container">
+    <h1>Add Book</h1>
+    <form *ngIf="auth.getUserRole()==='ADMIN'" [formGroup]="bookForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="title">Title</label>
+        <input formControlName="title" type="text" id="title" name="title">
+        <div *ngIf="bookForm.get('title')?.invalid && bookForm.get('title')?.touched" class="error-message">
+          Title is required.
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="description">Description</label>
+        <textarea formControlName="description" id="description" name="description" rows="4"></textarea>
+        <div *ngIf="bookForm.get('description')?.invalid && bookForm.get('description')?.touched" class="error-message">
+          Description is required.
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="price">Price</label>
+        <input formControlName="price" type="number" id="price" name="price" step="0.01">
+        <div *ngIf="bookForm.get('price')?.invalid && bookForm.get('price')?.touched" class="error-message">
+          Price is required and must be greater than or equal to 0.
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="authorId">Author ID</label>
+        <input formControlName="authorId" type="number" id="authorId" name="authorId">
+        <div *ngIf="bookForm.get('authorId')?.invalid && bookForm.get('authorId')?.touched" class="error-message">
+          Author ID is required.
+        </div>
+      </div>
+      <div class="form-group">
+        <button type="submit" [disabled]="!bookForm.valid">Submit</button>
+      </div>
+    </form>
+  </div>
+
+  <div class="results-container">
+    <h2>Books</h2>
+    <table *ngIf="pagedBooks">
+      <thead>
+      <tr>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Price</th>
+        <th>Single Page</th>
+        <th>Add to Favorites</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let book of pagedBooks">
+        <td>{{ book.title }}</td>
+        <td>{{ book.description }}</td>
+        <td>{{ book.price }}</td>
+        <td>
+          <button [routerLink]="['/book', book.id]">Single page</button>
+        </td>
+        <td>
+          <button (click)="addToFavorites(book.id)">Add to Favorites</button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+
+    <div class="pagination">
+      <button (click)="changePage(1)" [disabled]="currentPage === 1">First</button>
+      <button (click)="changePage(currentPage - 1)" [disabled]="currentPage === 1">Prev</button>
+
+      <span>Page {{ currentPage }} of {{ totalPages }}</span>
+
+      <button (click)="changePage(currentPage + 1)" [disabled]="currentPage === totalPages">Next</button>
+      <button (click)="changePage(totalPages)" [disabled]="currentPage === totalPages">Last</button>
+    </div>
+  </div>
+</div>

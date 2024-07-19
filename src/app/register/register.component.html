@@ -1,0 +1,38 @@
+<div class="register-container">
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="register-form">
+    <h2>Register</h2>
+    <div class="message" >
+      {{message}}
+    </div>
+    <div class="input-group">
+      <label for="name">Name</label>
+      <input placeholder="Name" type="text" id="name" formControlName="name" required>
+      <div *ngIf="registerForm.get('name')?.invalid && registerForm.get('name')?.touched" class="error-message">
+       name is required
+      </div>
+    </div>
+    <div class="input-group">
+      <label for="surname">Surname</label>
+      <input placeholder="Surname" type="text" id="surname" formControlName="surname" required>
+      <div *ngIf="registerForm.get('surname')?.invalid && registerForm.get('surname')?.touched" class="error-message">
+        surname is required
+      </div>
+    </div>
+    <div class="input-group">
+      <label for="email">Email</label>
+      <input placeholder="Email" type="email" id="email" formControlName="email" required>
+      <div *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched" class="error-message">
+        email is required
+      </div>
+    </div>
+    <div class="input-group">
+      <label for="password">Password</label>
+      <input placeholder="Password" type="password" id="password" formControlName="password" required>
+      <div *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched" class="error-message">
+        password is required
+      </div>
+    </div>
+    <button type="submit">Register</button>
+    <p class="login-link">Already have an account? <a routerLink="/auth">Login</a></p>
+  </form>
+</div>

@@ -1,0 +1,103 @@
+.container {
+  display: flex;
+  justify-content: center;
+  margin: 20px;
+}
+
+.book-container {
+  width: 50%;
+  padding: 20px;
+  background-color: #f0f5ff;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.book-card {
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  padding: 30px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.book-title {
+  color: #1e90ff;
+  margin-bottom: 15px;
+  font-size: 24px;
+}
+
+.book-description {
+  margin: 15px 0;
+  color: #333;
+  font-size: 16px;
+}
+
+.book-price {
+  font-size: 18px;
+  margin-bottom: 20px;
+  color: #01080c;
+}
+
+.book-card button {
+  background-color: #1e90ff;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-right: 10px;
+}
+
+.book-card button:hover {
+  background-color: #007bff;
+}
+
+.comments-section {
+  margin-top: 20px;
+}
+
+.comments-container {
+  max-height: 300px; /* Adjust the height as needed */
+  overflow-y: scroll;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background-color: #fff;
+}
+
+.comment {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 15px;
+  margin-bottom: 10px;
+}
+
+.add-comment {
+  margin-top: 20px;
+}
+
+.add-comment textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.add-comment button {
+  background-color: #1e90ff;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.add-comment button:hover {
+  background-color: #007bff;
+}

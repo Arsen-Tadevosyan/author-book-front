@@ -1,0 +1,51 @@
+.container {
+  display: flex;
+  gap: 25px;
+  position: absolute;
+}
+
+.search-box {
+  flex: 1;
+  max-width: 200px;
+}
+
+.search-input {
+  width: 100%;
+  padding: 10px;
+  border: 3px solid #00ffe0;
+  border-radius: 10px;
+}
+
+.scroll-container {
+  flex: 3;
+  max-height: 250px;
+  overflow-y: auto;
+  border: 1px solid #6fece2;
+  border-radius: 7px;
+  background-color: #f4eeee;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+thead {
+  background-color: #1762ff;
+}
+
+th, td {
+  padding: 12px;
+  text-align: left;
+}
+
+
+.book-title {
+  cursor: pointer;
+  color: #f61e1e;
+  transition: color 0.3s ease;
+}
+
+.book-title:hover {
+  color: #01080c;
+}
