@@ -1,6 +1,6 @@
-<div class="main-div">
-  <h2>Add Author</h2>
-  <form (ngSubmit)="onSubmit()">
+<div class="form-container">
+  <h1>Add Author</h1>
+  <form *ngIf="auth.getUserRole()=='ADMIN'" (ngSubmit)="onSubmit()">
     <div class="form-group">
       <label for="name">Name</label>
       <input [(ngModel)]="name" type="text" id="name" name="name" required>
@@ -24,29 +24,35 @@
       <button type="submit">Submit</button>
     </div>
   </form>
+</div>
+<h2>Authors</h2>
+<table>
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Surname</th>
+    <th>Gender</th>
+    <th>Age</th>
+    <th *ngIf="auth.getUserRole()=='ADMIN'" >Update</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let author of authors?.data">
+    <td>{{ author.id }}</td>
+    <td>{{ author.name }}</td>
+    <td>{{ author.surname }}</td>
+    <td>{{ author.gender }}</td>
+    <td>{{ author.age }}</td>
+    <td *ngIf="auth.getUserRole()=='ADMIN'">
+      <button (click)="editAuthor(author.id)">Update</button>
+    </td>
+  </tr>
+  </tbody>
+</table>
 
-  <h2>Authors</h2>
-  <table>
-    <thead>
-    <tr>
-      <th>Name</th>
-      <th>Surname</th>
-      <th>Gender</th>
-      <th>Age</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr *ngFor="let author of authors?.data">
-      <td>{{ author?.name }}</td>
-      <td>{{ author?.surname }}</td>
-      <td>{{ author?.gender }}</td>
-      <td>{{ author?.age }}</td>
-    </tr>
-    </tbody>
-  </table>
-  <div class="pagination">
-    <button (click)="previousPage()">Previous</button>
-    <span>Page {{ page + 1 }}</span>
-    <button (click)="nextPage()">Next</button>
-  </div>
+<div class="pagination">
+  <button (click)="previousPage()">Previous</button>
+  <span>Page {{ page + 1 }}</span>
+  <button (click)="nextPage()">Next</button>
 </div>
